@@ -78,12 +78,12 @@ export const GlobalFileNames = {
 	apiConversationHistory: "api_conversation_history.json",
 	uiMessages: "ui_messages.json",
 	openRouterModels: "openrouter_models.json",
-	mcpSettings: "cline_mcp_settings.json",
+	mcpSettings: "nova_mini_mcp_settings.json",
 }
 
 export class ClineProvider implements vscode.WebviewViewProvider {
-	public static readonly sideBarId = "roo-cline.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
-	public static readonly tabPanelId = "roo-cline.TabPanelProvider"
+	public static readonly sideBarId = "nova-mini.SidebarProvider"
+	public static readonly tabPanelId = "nova-mini.TabPanelProvider"
 	private static activeInstances: Set<ClineProvider> = new Set()
 	private disposables: vscode.Disposable[] = []
 	private view?: vscode.WebviewView | vscode.WebviewPanel
@@ -96,7 +96,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 		readonly context: vscode.ExtensionContext,
 		private readonly outputChannel: vscode.OutputChannel,
 	) {
-		this.outputChannel.appendLine("ClineProvider instantiated")
+		this.outputChannel.appendLine("Nova Mini provider instantiated")
 		ClineProvider.activeInstances.add(this)
 		this.workspaceTracker = new WorkspaceTracker(this)
 		this.mcpHub = new McpHub(this)
@@ -331,7 +331,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} data:; script-src 'nonce-${nonce}';">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
 			<link href="${codiconsUri}" rel="stylesheet" />
-            <title>Cline</title>
+            <title>Nova Mini</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -556,7 +556,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 						await this.context.globalState.update('allowedCommands', message.commands);
 						// Also update workspace settings
 						await vscode.workspace
-							.getConfiguration('roo-cline')
+							.getConfiguration('nova-mini')
 							.update('allowedCommands', message.commands, vscode.ConfigurationTarget.Global);
 						break;
 					case "openMcpSettings": {
@@ -656,11 +656,11 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 	// MCP
 
 	async ensureMcpServersDirectoryExists(): Promise<string> {
-		const mcpServersDir = path.join(os.homedir(), "Documents", "Cline", "MCP")
+		const mcpServersDir = path.join(os.homedir(), "Documents", "Nova Mini", "MCP")
 		try {
 			await fs.mkdir(mcpServersDir, { recursive: true })
 		} catch (error) {
-			return "~/Documents/Cline/MCP" // in case creating a directory in documents fails for whatever reason (e.g. permissions) - this is fine since this path is only ever used in the system prompt
+			return "~/Documents/Nova Mini/MCP" // in case creating a directory in documents fails for whatever reason (e.g. permissions) - this is fine since this path is only ever used in the system prompt
 		}
 		return mcpServersDir
 	}
@@ -997,7 +997,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 		} = await this.getState()
 		
 		const allowedCommands = vscode.workspace
-			.getConfiguration('roo-cline')
+			.getConfiguration('nova-mini')
 			.get<string[]>('allowedCommands') || []
 
 		return {
