@@ -1,10 +1,10 @@
 {
-  "name": "roo-cline",
-  "displayName": "Roo Cline",
+  "name": "nova-mini",
+  "displayName": "Nova Mini",
   "description": "A fork of Cline, an autonomous coding agent, with some added experimental configuration and automation features.",
-  "publisher": "RooVeterinaryInc",
-  "version": "2.2.35",
-  "icon": "assets/icons/rocket.png",
+  "publisher": "ADAPT",
+  "version": "0.0.3",
+  "icon": "assets/icons/icon-512.png",
   "galleryBanner": {
     "color": "#617A91",
     "theme": "dark"
@@ -17,9 +17,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RooVetGit/Roo-Cline"
+    "url": "https://github.com/ADAPT/nova-mini"
   },
-  "homepage": "https://github.com/RooVetGit/Roo-Cline",
+  "homepage": "https://github.com/ADAPT/nova-mini",
   "categories": [
     "AI",
     "Chat",
@@ -48,86 +48,86 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "roo-cline-ActivityBar",
-          "title": "Roo Cline",
-          "icon": "$(rocket)"
+          "id": "nova-mini-ActivityBar",
+          "title": "Nova Mini",
+          "icon": "assets/icons/icon.png"
         }
       ]
     },
     "views": {
-      "roo-cline-ActivityBar": [
+      "nova-mini-ActivityBar": [
         {
           "type": "webview",
-          "id": "roo-cline.SidebarProvider",
+          "id": "nova-mini.SidebarProvider",
           "name": ""
         }
       ]
     },
     "commands": [
       {
-        "command": "roo-cline.plusButtonClicked",
+        "command": "nova-mini.plusButtonClicked",
         "title": "New Task",
         "icon": "$(add)"
       },
       {
-        "command": "roo-cline.mcpButtonClicked",
+        "command": "nova-mini.mcpButtonClicked",
         "title": "MCP Servers",
         "icon": "$(server)"
       },
       {
-        "command": "roo-cline.historyButtonClicked",
+        "command": "nova-mini.historyButtonClicked",
         "title": "History",
         "icon": "$(history)"
       },
       {
-        "command": "roo-cline.popoutButtonClicked",
+        "command": "nova-mini.popoutButtonClicked",
         "title": "Open in Editor",
         "icon": "$(link-external)"
       },
       {
-        "command": "roo-cline.settingsButtonClicked",
+        "command": "nova-mini.settingsButtonClicked",
         "title": "Settings",
         "icon": "$(settings-gear)"
       },
       {
-        "command": "roo-cline.openInNewTab",
+        "command": "nova-mini.openInNewTab",
         "title": "Open In New Tab",
-        "category": "Roo Cline"
+        "category": "Nova Mini"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "roo-cline.plusButtonClicked",
+          "command": "nova-mini.plusButtonClicked",
           "group": "navigation@1",
-          "when": "view == roo-cline.SidebarProvider"
+          "when": "view == nova-mini.SidebarProvider"
         },
         {
-          "command": "roo-cline.mcpButtonClicked",
+          "command": "nova-mini.mcpButtonClicked",
           "group": "navigation@2",
-          "when": "view == roo-cline.SidebarProvider"
+          "when": "view == nova-mini.SidebarProvider"
         },
         {
-          "command": "roo-cline.historyButtonClicked",
+          "command": "nova-mini.historyButtonClicked",
           "group": "navigation@3",
-          "when": "view == roo-cline.SidebarProvider"
+          "when": "view == nova-mini.SidebarProvider"
         },
         {
-          "command": "roo-cline.popoutButtonClicked",
+          "command": "nova-mini.popoutButtonClicked",
           "group": "navigation@4",
-          "when": "view == roo-cline.SidebarProvider"
+          "when": "view == nova-mini.SidebarProvider"
         },
         {
-          "command": "roo-cline.settingsButtonClicked",
+          "command": "nova-mini.settingsButtonClicked",
           "group": "navigation@5",
-          "when": "view == roo-cline.SidebarProvider"
+          "when": "view == nova-mini.SidebarProvider"
         }
       ]
     },
     "configuration": {
-      "title": "RooCline",
+      "title": "NovaMini",
       "properties": {
-        "roo-cline.allowedCommands": {
+        "nova-mini.allowedCommands": {
           "type": "array",
           "items": {
             "type": "string"
